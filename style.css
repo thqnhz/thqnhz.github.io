@@ -19,6 +19,7 @@
     margin: 0;
     padding: 0;
     font-family: var(--editor-font);
+    font-size: 1rem;
 }
 
 body {
@@ -75,11 +76,24 @@ body {
     background: rgba(var(--overlay0), 0.1);
 }
 
-.command-pallete {
+.middle-side {
     display: flex;
     position: absolute;
     transform: translateX(-50%);
     left: 50%;
+    gap: 0.5rem;
+}
+
+.util-link.previous {
+    font-family: var(--console-font);
+}
+
+.util-link.next {
+    font-family: var(--console-font);
+}
+
+.command-pallete {
+    display: flex;
     padding: 0 2rem;
     justify-content: center;
     align-items: center;
@@ -89,16 +103,14 @@ body {
     border-radius: 0.5rem;
     user-select: none;
     height: 1.8rem;
-    width: 30%;
+    width: 300px;
     caret-color: var(--text);
     outline: none;
     color: var(--text);
-    font-size: 1rem;
 }
 
 .command-pallete::placeholder {
     color: var(--text);
-    font-size: 1rem;
     font-weight: 500;
 }
 
