@@ -13,6 +13,7 @@
     --text: #cdd6f4;
     --editor-font: "Jetbrains Mono", monospace;
     --console-font: "Fira Code", monospace;
+    --tab-icon-size: 2rem;
 }
 
 * {
@@ -164,10 +165,19 @@ body {
 }
 
 .editor .tabs {
-    width: 3rem;
-    padding: 0.5rem;
+    width: calc(var(--tab-icon-size) + 1rem);
     overflow-x: hidden;
-    border-right: 1px solid rgba(var(--overlay0), 0.1);
+    border-right: 1px solid rgba(var(--overlay0), 0.5);
+    align-items: center;
+}
+
+.editor .tabs img {
+    padding: 0.5rem;
+    width: var(--tab-icon-size);
+}
+
+.editor .tabs .active {
+    background: rgba(var(--overlay2), 0.1);
 }
 
 .explorer {
@@ -177,7 +187,7 @@ body {
 
 .explorer .explorer-title {
     font-weight: 800;
-    padding: 0 0 0.75rem 0.5rem;
+    padding: 0 0 0.5rem 0.5rem;
 }
 
 .explorer .file {
@@ -199,7 +209,7 @@ body {
 }
 
 .explorer .file li:hover {
-    background: rgba(var(--overlay2), 0.15);
+    background: rgba(var(--overlay2), 0.1);
     color: var(--text);
 }
 
