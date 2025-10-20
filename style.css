@@ -1,5 +1,5 @@
 :root {
-    --accent: #89b4fa;
+    --accent: 137, 180, 250;
     --base: #1e1e2e;
     --mantle: #181825;
     --surface0: #313244;
@@ -14,6 +14,8 @@
     --editor-font: "Jetbrains Mono", monospace;
     --console-font: "Fira Code", monospace;
     --tab-icon-size: 2rem;
+    --tab-width: 16rem;
+    --terminal-height: 12rem;
 }
 
 * {
@@ -29,6 +31,8 @@ body {
 
 .vscode {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     height: 100vh;
     width: 100vw;
     background: var(--base);
@@ -117,8 +121,8 @@ body {
 }
 
 .command-palette:focus {
-    border: 1px solid var(--accent);
-    box-shadow: 0 0 4px var(--accent);
+    border: 1px solid rgb(var(--accent));
+    box-shadow: 0 0 4px rgb(var(--accent));
 }
 
 .activity-bar .right-side {
@@ -152,7 +156,7 @@ body {
 
 .editor {
     display: flex;
-    height: calc(100vh - 2.5rem);
+    height: calc(100vh - 2.5rem - 2rem);
     width: 100%;
     position: absolute;
     top: 2.5rem;
@@ -160,7 +164,7 @@ body {
 
 .editor .left-side {
     display: flex;
-    width: 16rem;
+    width: var(--tab-width);
     background: var(--mantle);
 }
 
@@ -177,7 +181,7 @@ body {
 }
 
 .editor .tabs .active {
-    background: rgba(var(--overlay2), 0.1);
+    background: rgba(var(--accent), 0.1);
 }
 
 .explorer {
@@ -188,6 +192,7 @@ body {
 .explorer .explorer-title {
     font-weight: 800;
     padding: 0 0 0.5rem 0.5rem;
+    user-select: none;
 }
 
 .explorer .file {
@@ -209,11 +214,79 @@ body {
 }
 
 .explorer .file li:hover {
-    background: rgba(var(--overlay2), 0.1);
+    background: rgba(var(--accent), 0.1);
     color: var(--text);
 }
 
 .explorer .file .active {
-    background: rgba(var(--overlay2), 0.1);
+    background: rgba(var(--accent), 0.15);
     color: var(--text);
+    border-right: 2px solid rgb(var(--accent));
+}
+
+.editor .right-side {
+    display: flex;
+    width: calc(100vw - var(--tab-width));
+    background: var(--base);
+    flex-direction: column;
+}
+
+.code-editor {
+    display: flex;
+    flex: 1;
+    background: var(--base);
+}
+
+.terminal {
+    display: flex;
+    flex-direction: column;
+    height: var(--terminal-height);
+    border-top: 1px solid rgba(var(--overlay2), 0.75);
+}
+
+.terminal-bar {
+    display: flex;
+    border-bottom: 1px solid rgba(var(--overlay0), 0.2);
+    user-select: none;
+    width: calc((100vw - var(--tab-width)));
+}
+
+.terminal-bar .left-side {
+    display: flex;
+    background: transparent;
+    font-weight: 500;
+    width: 40%;
+}
+
+.terminal-bar .left-side .label {
+    padding: 0.5rem;
+}
+
+.terminal-bar .left-side .label.active {
+    background: rgba(var(--accent), 0.1);
+    border-bottom: 2px solid rgb(var(--accent));
+}
+
+.status-bar {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(100vw - 2rem);
+    height: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--mantle);
+    font-weight: 300;
+    user-select: none;
+    padding: 0 1rem;
+}
+
+.status-bar .left-side {
+    display: flex;
+    padding-left: 0.5rem;
+}
+
+.status-bar img {
+    height: 1rem;
 }
