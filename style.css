@@ -92,7 +92,7 @@ body {
     font-family: var(--console-font);
 }
 
-.command-pallete {
+.command-palette {
     display: flex;
     padding: 0 2rem;
     justify-content: center;
@@ -109,12 +109,12 @@ body {
     color: var(--text);
 }
 
-.command-pallete::placeholder {
+.command-palette::placeholder {
     color: var(--text);
     font-weight: 500;
 }
 
-.command-pallete:focus {
+.command-palette:focus {
     border: 1px solid var(--accent);
     box-shadow: 0 0 4px var(--accent);
 }
