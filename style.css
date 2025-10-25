@@ -27,15 +27,97 @@
 
 body {
     color: var(--text);
+    background: var(--base);
 }
 
-.vscode {
+#fullscreen-overlay {
+    display: flex;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(0.3rem);
+    transition: opacity 0.3s ease;
+}
+
+.prompt-box {
+    background: var(--base);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 2rem rgba(var(--accent), 0.5);
+    max-width: 40rem;
+    width: 90%;
+    animation: pop-in 0.3s ease;
+}
+
+.prompt-box h2 {
+    margin: 0 0 1rem;
+    font-weight: 700;
+}
+
+.prompt-box p {
+    margin-bottom: 1rem;
+}
+
+.prompt-box button {
+    background: rgb(var(--accent));
+    color: var(--base);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.prompt-box button:hover {
+    scale: 1.05;
+}
+
+@keyframes pop-in {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.hidden { display: none; }
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+#desktop {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+#desktop img {
+    width: 100vw;
+    display: block;
+    overflow: hidden;
+}
+
+#vscode {
     position: absolute;
     display: flex;
     flex-direction: column;
     height: 100vh;
     width: 100vw;
-    background: var(--base);
 }
 
 .activity-bar {

@@ -13,7 +13,18 @@
 </head>
 
 <body>
-    <div class="vscode">
+    <div id="fullscreen-overlay">
+        <div class="prompt-box">
+            <h2>Enter Fullscreen</h2>
+            <p>This website is designed for fullscreen mode.<br/>Click below to enter fullscreen or press F11.</p>
+            <button id="fullscreen-btn">Fullscreen</button>
+        </div>
+    </div>
+    <div id="desktop" class="hidden">
+        <img src="asset/wallpaper.png"/>
+    </div>
+
+    <div id="vscode">
         <div class="activity-bar">
             <div class="left-side">
                 <div><img src="https://github.com/thqnhz.png" alt="avatar" id="avatar"/></div>
@@ -29,9 +40,9 @@
                 <input type="text" class="command-palette" placeholder="&#x1F50D;&#xFE0E; Search - Visual Studio Code"/>
             </div>
             <div class="right-side">
-                <div class="windows-button green"></div>
-                <div class="windows-button yellow"></div>
-                <div class="windows-button red"></div>
+                <div class="windows-button green" title="Minimize"></div>
+                <div class="windows-button yellow" title="Maximize"></div>
+                <div class="windows-button red" title="Close"></div>
             </div>
         </div>
 
