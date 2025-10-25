@@ -137,6 +137,11 @@ body {
 #taskbar .left-side img {
     height: calc(var(--taskbar-height) - 0.5rem);
     width: calc(var(--taskbar-height) - 0.5rem);
+    border-radius: 5px;
+}
+
+#taskbar .left-side img:hover {
+    background: rgba(var(--overlay0), 0.1);
 }
 
 #taskbar .right-side {
