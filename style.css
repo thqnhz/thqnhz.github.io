@@ -16,6 +16,7 @@
     --tab-icon-size: 2rem;
     --tab-width: 16rem;
     --terminal-height: 12rem;
+    --taskbar-height: 3rem;
 }
 
 * {
@@ -110,6 +111,29 @@ body {
     width: 100vw;
     display: block;
     overflow: hidden;
+}
+
+#taskbar {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--taskbar-height);
+    background: var(--mantle);
+    z-index: 999;
+    align-content: space-between;
+    justify-content: center;
+}
+
+#taskbar .right-side {
+    display: flex;
+    position: absolute;
+    right: 1rem;
+    bottom: 0.25rem;
+    text-align: center;
+    font-weight: 500;
+    gap: 0.5rem;
 }
 
 #vscode {

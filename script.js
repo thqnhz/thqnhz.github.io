@@ -47,3 +47,12 @@ closeBtn.addEventListener("click", () => {
         requestAnimationFrame(() => desktop.classList.add("fade-in"));
     }, 300);
 })
+
+function updateClock() {
+    const now = new Date();
+    document.getElementById('hour').textContent = now.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+    document.getElementById('day').textContent = now.toLocaleDateString();
+}
+
+updateClock();
+setInterval(updateClock, 1000);
