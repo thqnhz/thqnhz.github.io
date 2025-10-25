@@ -124,6 +124,19 @@ body {
     z-index: 999;
     align-content: space-between;
     justify-content: center;
+    user-select: none;
+}
+
+#taskbar .left-side {
+    position: absolute;
+    top: 0.25rem;
+    left: 1rem;
+    gap: 0.5rem;
+}
+
+#taskbar .left-side img {
+    height: calc(var(--taskbar-height) - 0.5rem);
+    width: calc(var(--taskbar-height) - 0.5rem);
 }
 
 #taskbar .right-side {
