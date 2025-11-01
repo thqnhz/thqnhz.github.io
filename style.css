@@ -132,17 +132,28 @@ body {
     display: flex;
     top: 0.25rem;
     left: 1rem;
-    gap: 0.5rem;
+    gap: 0.75rem;
     flex-direction: row;
+    align-content: center;
 }
 
-#taskbar .left-side img {
+#taskbar .left-side .app {
+    display: flex;
     height: calc(var(--taskbar-height) - 0.5rem);
     width: calc(var(--taskbar-height) - 0.5rem);
+    align-content: center;
+    align-items: center;
     border-radius: 5px;
 }
 
-#taskbar .left-side img:hover {
+#taskbar .left-side img {
+    height: calc(100% - 0.5rem);
+    width: calc(100% - 0.5rem);
+    margin-left: 0.25rem;
+    border-radius: 3px;
+}
+
+#taskbar .left-side .app:hover {
     background: rgba(var(--overlay0), 0.1);
 }
 
