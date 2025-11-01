@@ -14,7 +14,7 @@
 
 <body>
     <div id="fullscreen-overlay">
-        <div class="prompt-box">
+        <div id="prompt-box">
             <h2>Enter Fullscreen</h2>
             <p>This website is designed for fullscreen mode.<br/>Click below to enter fullscreen or press F11.</p>
             <button id="fullscreen-btn">Fullscreen</button>
@@ -38,7 +38,7 @@
     </div>
 
     <div id="vscode">
-        <div class="activity-bar">
+        <div id="activity-bar">
             <div class="left-side">
                 <div><img src="https://github.com/thqnhz.png" alt="avatar" id="avatar"/></div>
                 <div class="util-link">File</div>
@@ -50,7 +50,7 @@
             <div class="middle-side">
                 <div class="util-link previous">&lt;-</div>
                 <div class="util-link next">-&gt;</div>
-                <input type="text" class="command-palette" placeholder="&#x1F50D;&#xFE0E; Search - Visual Studio Code"/>
+                <input type="text" id="command-palette" placeholder="&#x1F50D;&#xFE0E; Search - Visual Studio Code"/>
             </div>
             <div class="right-side">
                 <div class="windows-button green" title="Minimize"></div>
@@ -59,12 +59,12 @@
             </div>
         </div>
 
-        <div class="editor">
+        <div id="editor">
             <div class="left-side">
-                <div class="tabs">
+                <div id="tabs">
                     <img src="asset/vscode/explorer.png" alt="tab-explorer" class="active"/>
                 </div>
-                <div class="explorer">
+                <div id="explorer">
                     <div class="explorer-title">EXPLORER</div>
                     <ul class="file">
                         <li class="active">index.html</li>
@@ -75,11 +75,11 @@
             </div>
 
             <div class="right-side">
-                <div class="code-editor">
+                <div id="code-editor">
 
                 </div>
-                <div class="terminal">
-                    <div class="terminal-bar">
+                <div id="terminal">
+                    <div id="terminal-bar">
                         <div class="left-side">
                             <div class="label active">PROBLEMS</div>
                             <div class="label">OUTPUT</div>
@@ -100,7 +100,7 @@
             </div>
         </div>
 
-        <div class="status-bar">
+        <div id="status-bar">
             <div class="left-side">
                 <div class="source-control">
                     <img src="asset/vscode/source-control.png" alt="source-control">
