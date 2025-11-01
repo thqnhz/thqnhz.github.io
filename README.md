@@ -21,10 +21,10 @@ The fonts are licensed under `SIL Open Font License`.
 
 <details closed>
 <summary>Logos</summary>
-<img src="asset/desktop/windows-logo.svg" style="max-width: 20%; margin-right: 0.5rem;"/>
-<img src="asset/desktop/vscode-logo.svg" style="max-width: 20%; margin-right: 0.5rem;"/>
-<img src="asset/desktop/github-logo.svg" style="max-width: 20%; margin-right: 0.5rem;"/>
-<img src="asset/desktop/ytm-logo.svg" style="max-width: 20%; margin-right: 0.5rem;"/>
+<img src="asset/desktop/windows-logo.svg" width="100"/>
+<img src="asset/desktop/vscode-logo.svg" width="100"/>
+<img src="asset/desktop/github-logo.svg" width="100"/>
+<img src="asset/desktop/ytm-logo.svg" width="100"/>
 
 Most of them are taken from [Logopedia](https://logos.fandom.com/). And are licensed under `CC-BY-SA`.
 </details>
