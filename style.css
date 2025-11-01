@@ -129,9 +129,11 @@ body {
 
 #taskbar .left-side {
     position: absolute;
+    display: flex;
     top: 0.25rem;
     left: 1rem;
     gap: 0.5rem;
+    flex-direction: row;
 }
 
 #taskbar .left-side img {
@@ -214,10 +216,7 @@ body {
     gap: 0.5rem;
 }
 
-.util-link.previous {
-    font-family: var(--console-font);
-}
-
+.util-link.previous,
 .util-link.next {
     font-family: var(--console-font);
 }
