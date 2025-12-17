@@ -48,6 +48,18 @@ closeBtn.addEventListener("click", () => {
     }, 300);
 })
 
+const vscode_icon = document.getElementById("vscode-icon");
+
+vscode_icon.addEventListener("click", () => {
+    desktop.classList.add("fade-out");
+    setTimeout(() => {
+        desktop.classList.add("hidden");
+
+        vscode.classList.remove("hidden");
+        requestAnimationFrame(() => vscode.classList.add("fade-in"));
+    }, 300);
+})
+
 function updateClock() {
     const now = new Date();
     document.getElementById('hour').textContent = now.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
