@@ -17,6 +17,7 @@
     --tab-width: 16rem;
     --terminal-height: 12rem;
     --taskbar-height: 3rem;
+    --transition-speed: 0.3s;
 }
 
 * {
@@ -42,7 +43,7 @@ body {
     pointer-events: none;
     background: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(0.3rem);
-    transition: opacity 0.3s ease;
+    transition: opacity var(--transition-speed) ease;
 }
 
 #prompt-box {
@@ -75,7 +76,8 @@ body {
 }
 
 #prompt-box button:hover {
-    scale: 1.05;
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
 }
 
 @keyframes pop-in {
@@ -89,16 +91,18 @@ body {
     }
 }
 
-.hidden { display: none; }
+.hidden { display: none !important; }
 
 .fade-out {
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--transition-speed) ease;
+    will-change: opacity;
 }
 
 .fade-in {
     opacity: 1;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--transition-speed) ease;
+    will-change: opacity;
 }
 
 #desktop {
@@ -342,7 +346,7 @@ body {
     padding: 0.25rem 0.5rem;
     color: var(--subtext0);
     cursor: pointer;
-    transition: background 0.15s ease;
+    transition: background 0.15s ease, color 0.15s ease;
     box-sizing: border-box;
     width: 100%;
 }
@@ -423,4 +427,263 @@ body {
 
 #status-bar img {
     height: 1rem;
+}
+
+#wordle-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 700px;
+    background: var(--base);
+    border: 1px solid rgba(var(--overlay0), 0.2);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    overflow: hidden;
+    animation: zoom-in 0.2s ease-out;
+}
+
+@keyframes zoom-in {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.window-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--mantle);
+    border-bottom: 1px solid rgba(var(--overlay0), 0.2);
+    cursor: grab;
+}
+
+.window-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text);
+}
+
+.game-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    gap: 2rem;
+}
+
+#wordle-grid {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 5px;
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    max-height: 380px;
+    aspect-ratio: var(--aspect-ratio, 5/6);
+    margin: 0 auto;
+}
+
+.tile-row {
+    display: grid;
+    gap: 5px;
+}
+
+.tile {
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--surface2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--text);
+    user-select: none;
+    transition: transform 0.15s linear;
+}
+
+.tile[data-state="active"] {
+    border-color: var(--subtext0);
+    animation: pop 0.1s;
+}
+
+.tile[data-state="correct"] {
+    background-color: #6aaa64;
+    border-color: #6aaa64;
+    color: white;
+}
+
+.tile[data-state="present"] {
+    background-color: #c9b458;
+    border-color: #c9b458;
+    color: white;
+}
+
+.tile[data-state="absent"] {
+    background-color: var(--surface1);
+    border-color: var(--surface1);
+    color: white;
+}
+
+.tile.flip {
+    animation: flip 0.6s ease;
+}
+
+.tile.shake {
+    animation: shake 0.5s ease;
+}
+
+#wordle-keyboard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 10px;
+    user-select: none;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+}
+
+.key {
+    font-family: inherit;
+    font-weight: bold;
+    border: 0;
+    padding: 0;
+    height: 58px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--surface1);
+    color: var(--text);
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    transition: background-color 0.1s;
+}
+
+.key.wide {
+    flex: 1.5;
+    font-size: 0.8rem;
+}
+
+.key:hover {
+    background-color: var(--surface2);
+}
+
+.key[data-state="correct"] {
+    background-color: #6aaa64;
+    color: white;
+}
+
+.key[data-state="present"] {
+    background-color: #c9b458;
+    color: white;
+}
+
+.key[data-state="absent"] {
+    background-color: var(--surface0);
+    opacity: 0.5;
+}
+
+@keyframes pop {
+    50% { transform: scale(1.1); }
+}
+
+@keyframes flip {
+    0% { transform: rotateX(0); }
+    50% { transform: rotateX(90deg); }
+    100% { transform: rotateX(0); }
+}
+
+@keyframes shake {
+    10%, 90% { transform: translateX(-1px); }
+    20%, 80% { transform: translateX(2px); }
+    30%, 50%, 70% { transform: translateX(-4px); }
+    40%, 60% { transform: translateX(4px); }
+}
+
+#wordle-toast-container {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 1010;
+    pointer-events: none;
+}
+
+.wordle-toast {
+    background-color: var(--text);
+    color: var(--base);
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: fade-in-toast 0.3s forwards;
+}
+
+.wordle-toast.hide {
+    animation: fade-out-toast 0.3s forwards;
+}
+
+@keyframes fade-in-toast {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-out-toast {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-10px); }
+}
+
+.window-controls-bar {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+    background: var(--surface0);
+    border-bottom: 1px solid rgba(var(--overlay0), 0.2);
+}
+
+#word-length-select, #new-game-btn {
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--overlay0);
+    background: var(--surface1);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+#new-game-btn:hover, #word-length-select:hover {
+    background: var(--surface2);
+}
+
+.tile-row {
+    grid-template-columns: repeat(var(--word-length, 5), 1fr);
 }
